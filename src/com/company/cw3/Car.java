@@ -1,13 +1,13 @@
-package com.company;
+package com.company.cw3;
 
 public class Car {
-    private int maxSpeed;
+    private String maxSpeed;
     private String mark;
     private String color;
     private String vinNumber;
     private double oilPressure;
 
-    public Car(int maxSpeed, String mark, String color, String vinNumber) {
+    public Car(String maxSpeed, String mark, String color, String vinNumber) {
         this.maxSpeed = maxSpeed;
         this.mark = mark;
         this.color = color;
@@ -36,7 +36,7 @@ public class Car {
 //
 // SETTERS
 //
-    public void setMaxSpeed(int maxSpeed) {
+    public void setMaxSpeed(String maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
