@@ -6,46 +6,105 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-
-        float number = inputFloat("Enter a number:");
-
-        int[] nums = new int[1];
+        float[] nums = new float[1];
         String[] opers = new String[1];
-        int result;
+        float result = inputFloat("Enter a number:");
+        ;
 
-        for (int i = 1; i > 0; i++) {
-            if (i % 2 != 0) {
-                String oper = inputString("Enter an operator:");
-                if (oper.equals("=")) break;
-            } else {
-                float num = inputFloat("Enter a number:");
+        for (int i = 0; i >= 0; i++) {
 
+            String oper = inputString("Enter an operator:");
+            opers[i] = oper;
+            opers = extendArrayStr(opers);
+
+            if (oper.equals("=")) {
+                System.out.println(result);
+                break;
             }
-        }
 
+            float num = inputFloat("Enter a number:");
+            nums[i] = num;
+            nums = extendArrayFloat(nums);
+
+            result = operate(result, nums[i], opers[i]);
+
+//            switch (opers[i]) {
+//                case ("+"):
+//                    result += nums[i];
+//                case ("-"):
+//                    result -= nums[i];
+//                case ("*"):
+//                    result *= nums[i];
+//                case ("/"):
+//                    result /= nums[i];
+//            }
+        }
     }
 
-    public static float inputFloat(String text) {
+    private static float inputFloat(String text) {
         Scanner input = new Scanner(System.in);
         System.out.println(text);
         if (input.hasNextFloat()) {
             return input.nextFloat();
-        }else {
+        } else {
             System.out.println("Error, please, try again.");
             return inputFloat(text);
         }
-
     }
 
-    public static String inputString(String text) {
+    private static String inputString(String text) {
         Scanner input = new Scanner(System.in);
         System.out.println(text);
         if (input.hasNextLine()) {
             return input.nextLine();
-        }else {
+        } else {
             System.out.println("Error, please, try again.");
             return inputString(text);
         }
+    }
+
+    private static float[] extendArrayFloat(float[] array) {
+        float[] temp = array.clone();
+        array = new float[array.length + 1];
+        System.arraycopy(temp, 0, array, 0, temp.length);
+        return array;
+    }
+
+    private static String[] extendArrayStr(String[] array) {
+        String[] temp = array.clone();
+        array = new String[array.length + 1];
+        System.arraycopy(temp, 0, array, 0, temp.length);
+        return array;
+    }
+
+    private static float operate(float num1, float num2, String oper) {
+        switch (oper) {
+            case ("+"):
+                return num1 + num2;
+            case ("-"):
+                return num1 - num2;
+            case ("*"):
+                return num1 * num2;
+            case ("/"):
+                return num1 / num2;
+            default:
+                return num1;
+        }
+//        if (oper.equals("+")){
+//            return num1 + num2;
+//        }
+//        if (oper.equals("-")){
+//            return num1 - num2;
+//        }
+//        if (oper.equals("*")){
+//            return num1 * num2;
+//        }
+//        if (oper.equals("/")){
+//            return num1 / num2;
+//        }
+//        else{
+//            return num1;
+//        }
     }
 
 }
